@@ -1,4 +1,3 @@
-package tucket.basiccollections;
 
 import java.util.*;
 
