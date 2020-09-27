@@ -74,5 +74,8 @@ public class w02_collections {
             System.out.println(result);
         }
 
+        System.out.println();
+        System.out.println("Thank you for using this program.");
+
     }
 }
