@@ -5,7 +5,8 @@ class w05_junitTest {
     @org.junit.jupiter.api.Test
     void getModel() {
         w05_junit myTest = new w05_junit("Subaru", "Legacy", 85406);
-        assertEquals("Honda", "Accord");
+        //See if test will fail with following:
+        //assertEquals("Honda", myTest.getModel());
         assertEquals("Subaru", myTest.getModel());
     }
 
