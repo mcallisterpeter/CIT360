@@ -18,8 +18,8 @@ class w08_threads_runnables_executors_execute {
 
 @startuml
 w08_threads_runnables_executors_execute -> w08_threads_runnables_executors: Send 4 threads using myService.execute()
-w08_threads_runnables_executors_execute <- w08_threads_runnables_executors: Send start string
-w08_threads_runnables_executors_execute <- w08_threads_runnables_executors: Send cooking string
-w08_threads_runnables_executors --> w08_threads_runnables_executors: Sleep for 1 minute
+w08_threads_runnables_executors_execute <-- w08_threads_runnables_executors: Send start string
+w08_threads_runnables_executors_execute <-- w08_threads_runnables_executors: Send cooking string
+w08_threads_runnables_executors -> w08_threads_runnables_executors: Sleep for 1 minute
 w08_threads_runnables_executors_execute <- w08_threads_runnables_executors: Send end cooking string
 @enduml
