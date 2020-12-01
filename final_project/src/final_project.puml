@@ -1,0 +1,47 @@
+@startuml
+    loop Till user defines they are done adding tips
+        loop Till input is correct
+            User -> Main: Input Order ID
+            Main -> Exception: Input is a 5 digit int
+            Exception --> User: Incorrect Input:\nGive user another chance to enter
+        end
+        loop Till input is correct
+            User -> Main: Input Sale Amount
+            Main -> Exception: Input is a double
+            Exception --> User: Incorrect Input:\nGive user another chance to enter
+        end
+        loop Till input is correct
+            User -> Main: Input Tip Amount
+            Main -> Exception: Input is a double
+            Exception --> User: Incorrect Input:\nGive user another chance to enter
+        end
+        Main -> Collection: Add inputs into collection
+        Main -> User: Ask if the user is done adding tips
+    end
+    loop Till input is correct
+        User -> Main: User inputs they are done
+        Main -> Exception: Input is Boolean
+        Exception --> User: Incorrect Input:\nGive user another chance to enter
+    end
+    Main -> Thread: Threads all the tips and runs all concurrently
+    Thread -> User: Displays all of the days tips
+    Main -> User: Asks if user would like to permanently log\nY = Log Permanently\nN = Delete All Entries
+    group User enters Y
+        loop Till input is correct
+            User -> Main: User inputs they would like to
+            Main -> Exception: Input is Boolean
+            Exception --> User: Incorrect Input:\nGive user another chance to enter
+        end
+        Main -> Hibernate: Loads all of the days tips into an SQL dataset
+        Hibernate -> User: Displays total logged tips for the day and total in database
+    end
+    group User enters N
+        loop Till input is correct
+            User -> Main: User inputs they would like to delete
+            Main -> Exception: Input is Boolean
+            Exception --> User: Incorrect Input:\nGive user another chance to enter
+        end
+        Main -> Collection: Clears all entered tips for the day
+    end
+    Main -> User: Thanks the user for using the program and shuts down
+@enduml
