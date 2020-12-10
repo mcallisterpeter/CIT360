@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="tips" table="TIPS">
+        <id column="ID" name="id" type="java.lang.Integer" />
+        <property column="PROC_DT" name="myDate" type="java.lang.String" />
+        <property column="ORDER_ID" name="orderId" type="java.lang.String" />
+        <property column="SALE_AMT" name="sale" type="java.lang.String" />
+        <property column="TIP_AMT" name="tip" type="java.lang.String" />
+    </class>
+</hibernate-mapping>
