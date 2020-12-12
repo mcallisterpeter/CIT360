@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>$Title$</title>
+    <link rel="stylesheet" href="small.css">
 </head>
 <body>
     <h1>Welcome to the tip tracker</h1>

@@ -23,7 +23,7 @@ public class collection_servlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         response.setContentType("text/html");
-        out.println("<html><head></head><body>");
+        out.println("<html><head><link rel=\"stylesheet\" href=\"small.css\"></head><body>");
 
         HttpSession session = request.getSession();
         String orderId = (String) session.getAttribute("order_id");
@@ -36,8 +36,8 @@ public class collection_servlet extends HttpServlet {
         tipCollection.add(tip);
 
         out.println("<h1>Entry has been logged</h1>");
-        out.println("<form action=\"tip_tracker.html\"><input type=\"submit\" value=\"Enter Another Tip\"></form>");
-        out.println("<form action=\"display_collection_servlet\" method=\"post\"><input type=\"submit\" value=\"Done for the Day\"></form>");
+        out.println("<form action=\"tip_tracker.html\"><input class=\"grn\" type=\"submit\" value=\"Enter Another Tip\"></form>");
+        out.println("<form action=\"display_collection_servlet\" method=\"post\"><input class=\"red\" type=\"submit\" value=\"Done for the Day\"></form>");
 
 
         out.println("</body></html>");
