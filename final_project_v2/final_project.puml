@@ -1,0 +1,46 @@
+@startuml
+    loop Till user defines they are done adding tips
+        loop Till User adds entry
+            loop Till all input is correct
+                User -> User: Input Order ID
+                User -> User: Input Sale Amount
+                User -> User: Input Tip Amount
+                User -> Server: Send all inputs
+                Server -> Servlet: Send all inputs
+                Servlet -> Exception: Order ID is an int
+                Exception --> Servlet: Incorrect Input
+                Servlet -> Exception: Sale Amount is a double
+                Exception --> Servlet: Incorrect Input
+                Servlet -> Exception: Tip Amount is a double
+                Exception --> Servlet: Incorrect Input
+                Servlet --> Server: Incorrect Input:\nGive user another chance to enter
+                Server --> User: Incorrect Input:\nGive user another chance to enter
+            end
+            Exception -> Servlet: All inputs are correct
+            Servlet -> Server: Sends inputs back to view
+            Server -> User: Displays what the user entered and\nasks if they would like to log entry or re-enter
+        end
+        User -> Server: Inputs they would like to add entry
+        Server -> Servlet: Add entry
+        Servlet -> Collection_Servlet: Add all inputs into collection
+        Collection_Servlet -> Server: Input has been added
+        Server -> User: Asks if they are done\nentering tips for the day
+    end
+    User -> Server: User inputs they are done
+    Server -> Collection_Servlet: Communicates all done entering tips
+    Collection_Servlet -> Display_Collection: Requests all inputs form Collection_Servlet
+    Display_Collection -> Server: Provides all inputs
+    Server -> User: Displays all inputs the user has entered and\nasks if they would like to store all inputs
+    group User enters Y
+        User -> Server: User inputs Y
+        Server -> Display_Collection: Communicates user input
+        Display_Collection -> Hibernate: Passes all inputs to hibernate
+        Hibernate -> MySQL: Logs all inputs into a MySQL database
+    end
+    group User enters N
+        User -> Server: User inputs N
+        Server -> Display_Collection: Communicates user input and clears collection
+    end
+    Display_Collection -> Server: Thanks the user for using the program and shuts down
+    Server -> User: Displays shutdown message
+@enduml
